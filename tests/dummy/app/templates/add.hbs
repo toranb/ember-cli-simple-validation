@@ -1,0 +1,16 @@
+<div class="name-parent-div">
+{{input value=model.name placeholder="name"}}
+{{#validation-error-field submitted=submitted className="red" field="name" model=model validation=nameValidation}}invalid name{{/validation-error-field}}
+</div>
+
+<div class="zipcode-parent-div">
+{{input value=model.zipcode placeholder="zipcode"}}
+{{#validation-error-field submitted=submitted field="zipcode" model=model validation=zipcodeValidation}}invalid zipcode{{/validation-error-field}}
+</div>
+
+<div class="email-parent-div">
+{{input value=model.email placeholder="email"}}
+{{#validation-error-field delayed=true submitted=submitted className="blue" field="email" model=model validation=emailValidation}}invalid email{{/validation-error-field}}
+</div>
+
+<button class="save" {{action "save"}}>Save</button>

@@ -1,0 +1,12 @@
+html, body {
+  margin: 20px;
+}
+.hidden {
+  display: none;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
