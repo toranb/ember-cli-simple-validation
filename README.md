@@ -73,9 +73,9 @@ The conventions that are required to use this library.
 ```
 1) The validation attributes you declare in the controller must have the suffix "Validation" (ie- nameValidation, emailValidation)
 2) The controller action must set a property called submitted/and you must pass this into each component as shown above
-3) The controller will add a computed property called "valid" that you can use to confirm each field is valid
-4) The model needs to support dirty tracking at the field level so the attr is required on each model property you want to validate
-5) The css class that is added to the span is "hidden" so verify this class is declared and will do something like display: none
+3) The mixin will add a computed property called "valid" that you can use to confirm each field is valid
+4) The model needs to support dirty tracking at the field level (ember-cli-simple-store provides the model and dirty tracked attr)
+5) The css class that is added to the span is "hidden"
 ```
 
 ## Running the unit tests
