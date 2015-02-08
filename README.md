@@ -49,7 +49,7 @@ Next add the component that will show/hide the error message in your template. T
 <button {{action "save"}}>Save</button>
 ```
 
-The last step is to add a true model object and declare each field
+The last step is to add a true model object and declare each field.
 
 ```js
 import { attr, Model } from "ember-cli-simple-store/model";
@@ -68,7 +68,7 @@ The user experience by default is that as the user starts typing the field with 
 {{#validation-error-field delayed=true submitted=submitted field="email" model=model validation=emailValidation}}invalid email{{/validation-error-field}}
 ```
 
-The conventions that are required to use this library
+The conventions that are required to use this library.
 
 ```
 1) The validation attributes you declare in the controller must have the suffix "Validation" (ie- nameValidation, emailValidation)
