@@ -6,6 +6,10 @@
 
 [ember-cli][] addon that provides simple validation for [ember.js][] web applications
 
+## Demo
+
+http://jsbin.com/hozire/1/
+
 ## Installation
 
 ```
