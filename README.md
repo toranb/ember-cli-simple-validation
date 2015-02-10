@@ -6,9 +6,21 @@
 
 [ember-cli][] addon that provides simple validation for [ember.js][] web applications
 
+The goals of this project are simple:
+
+```
+1) form validation for controllers/components that are bound to a persisted model
+2) consistent user experience that will validate right away as the user starts typing
+3) optional delay for complex input validation rules like password or email
+4) submit button friendly including a computed property to verify EACH input is valid
+5) support for regex and function based validation
+6) avoid auto generating all the form html/inputs/etc
+7) extracted from a real software project
+```
+
 ## Demo
 
-http://jsbin.com/hozire/1/
+http://emberjs.jsbin.com/fovolu/2/
 
 ## Installation
 
@@ -25,7 +37,7 @@ http://jsbin.com/hozire/1/
 
 First add the mixin to your controller and add a validate attribute for any field you want to have validated.
 
-The validation attr itself is simple. Without a second argument it will trim the value and return true/false (ie- the field will be required). If you need a more complex validation add a regex as the second argument.
+The validation attribute itself is simple. Without a second argument it will trim the value and return true/false (ie- the field will be required). If you need a more complex validation add a regex or custom function as the second argument.
 
 ```js
 import Ember from "ember";
@@ -45,7 +57,7 @@ export default Ember.Controller.extend(ValidationMixin, {
 });
 ```
 
-Next add the component that will show/hide the error message in your template. This project assumes you are doing rich model based validation so you need to have a model backed controller.
+Next add the component that will show/hide the error message in your template. This project assumes you are doing rich model based validation so you need to have a model backed controller or component.
 
 ```js
 {{input value=model.name placeholder="name"}}
@@ -78,13 +90,14 @@ The conventions that are required to use this library.
 1) The validation attributes you declare in the controller must have the suffix "Validation" (ie- nameValidation, emailValidation)
 2) The controller action must set a property called submitted/and you must pass this into each component as shown above
 3) The mixin will add a computed property called "valid" that you can use to confirm each field is valid
-4) The model needs to support dirty tracking at the field level (ember-cli-simple-store provides the model and dirty tracked attr)
+4) The model needs to support dirty tracking at the field level (ember-cli-simple-store provides the model and dirty tracked attribute)
 5) The css class that is added to the span is "hidden"
 ```
 
 ## Running the unit tests
 
     npm install
+    bower install
     ember test
 
 ## Example project built in

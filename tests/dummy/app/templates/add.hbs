@@ -13,4 +13,39 @@
 {{#validation-error-field delayed=true submitted=submitted className="blue" field="email" model=model validation=emailValidation}}invalid email{{/validation-error-field}}
 </div>
 
+<div class="rando-parent-div">
+{{input value=model.rando placeholder="rando"}}
+{{#validation-error-field submitted=submitted field="rando" model=model validation=randoValidation}}invalid rando{{/validation-error-field}}
+</div>
+
+<div class="radeo-parent-div">
+  <label>select an option</label>
+  <div class="the-radio-buttons">
+    <div class="radio-button-one">
+      {{radio-button groupValue=model.radeo id="radio01" value=1}}
+      <label for="radio01">one</label>
+    </div>
+    <div class="radio-button-two">
+      {{radio-button groupValue=model.radeo id="radio02" value=2}}
+      <label for="radio02">two</label>
+    </div>
+  </div>
+  {{#validation-error-field submitted=submitted field="radeo" model=model validation=radeoValidation}}invalid radeo{{/validation-error-field}}
+</div>
+
+<div class="thing-parent-div">
+  {{view "select"
+  prompt="select a thing"
+  contentBinding="controller.things"
+  valueBinding="model.thing"
+  optionValuePath="content.id"
+  optionLabelPath="content.id"}}
+  {{#validation-error-field submitted=submitted field="thing" model=model validation=thingValidation}}invalid thing{{/validation-error-field}}
+</div>
+
+<div class="tos-parent-div">
+{{input checked=model.tos type="checkbox"}}
+{{#validation-error-field submitted=submitted field="tos" model=model validation=tosValidation}}invalid tos{{/validation-error-field}}
+</div>
+
 <button class="save" {{action "save"}}>Save</button>

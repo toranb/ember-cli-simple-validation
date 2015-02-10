@@ -4,7 +4,7 @@ function attrs(mixin) {
     var attributes = [];
     var factory = mixin.get("constructor.ClassMixin.ownerConstructor");
     factory.eachComputedProperty(function (key) {
-        if (key.indexOf("Validation") > 1) {
+        if (key.indexOf("Validation") > 0) {
             attributes.push(key);
         }
     });
@@ -28,10 +28,19 @@ var ValidationMixin = Ember.Mixin.create({
 var validate = function(field, options) {
     return function() {
         var value = this.getWithDefault(field, "");
-        if (typeof(options) === "object") {
+        if (options instanceof RegExp) {
             return options.test(value);
         }
-        return value.trim().length > 0;
+        if (options instanceof Function) {
+            return options.apply(this, arguments);
+        }
+        if (typeof value === "boolean") {
+            return value;
+        }
+        if (typeof value === "string") {
+            return value.trim().length > 0;
+        }
+        return value;
     }.property(field);
 };
 
