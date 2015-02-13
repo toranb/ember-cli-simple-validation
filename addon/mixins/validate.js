@@ -16,9 +16,9 @@ var ValidationMixin = Ember.Mixin.create({
         var self = this;
         var attributes = attrs(this);
         Ember.defineProperty(this, "valid", Ember.computed(function() {
-            var result;
-            attributes.forEach(function(attr, index) {
-                result = index === 0 ? self.get(attr) : self.get(attr) && result;
+            var result = true;
+            attributes.forEach(function(attr) {
+                result = self.get(attr) && result;
             });
             return result;
         }).property("" + attributes));
