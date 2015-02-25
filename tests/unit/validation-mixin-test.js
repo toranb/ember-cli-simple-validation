@@ -1,4 +1,5 @@
 import Ember from "ember";
+import { test, module } from "qunit";
 import { attr, Model } from "ember-cli-simple-store/model";
 import { ValidationMixin, validate } from "ember-cli-simple-validation/mixins/validate";
 
@@ -24,44 +25,44 @@ module('Unit: Validation Mixin', {
   }
 });
 
-test('validation will fire when computed validation value is update', function() {
-    equal(controller.get('nameValidation'), true);
+test('validation will fire when computed validation value is update', function(assert) {
+    assert.equal(controller.get('nameValidation'), true);
     model.set('name', '');
-    equal(controller.get('nameValidation'), false);
+    assert.equal(controller.get('nameValidation'), false);
     model.set('name', 'x');
-    equal(controller.get('nameValidation'), true);
+    assert.equal(controller.get('nameValidation'), true);
 });
 
-test('validate attr without regex option will trim the value by default', function() {
-    equal(controller.get('nameValidation'), true);
+test('validate attr without regex option will trim the value by default', function(assert) {
+    assert.equal(controller.get('nameValidation'), true);
     model.set('name', '');
-    equal(controller.get('nameValidation'), false);
+    assert.equal(controller.get('nameValidation'), false);
     model.set('name', ' ');
-    equal(controller.get('nameValidation'), false);
+    assert.equal(controller.get('nameValidation'), false);
     model.set('name', 'x');
-    equal(controller.get('nameValidation'), true);
+    assert.equal(controller.get('nameValidation'), true);
 });
 
-test('validate attr with regex will validate using the given pattern', function() {
-    equal(controller.get('emailValidation'), true);
+test('validate attr with regex will validate using the given pattern', function(assert) {
+    assert.equal(controller.get('emailValidation'), true);
     model.set('email', '');
-    equal(controller.get('emailValidation'), false);
+    assert.equal(controller.get('emailValidation'), false);
     model.set('email', 'hi@h');
-    equal(controller.get('emailValidation'), false);
+    assert.equal(controller.get('emailValidation'), false);
     model.set('email', 'hi@hi.com');
-    equal(controller.get('emailValidation'), true);
+    assert.equal(controller.get('emailValidation'), true);
 });
 
-test('valid property defined on controller when mixin used', function() {
-    equal(controller.get('emailValidation'), true);
-    equal(controller.get('nameValidation'), true);
-    equal(controller.get('valid'), true);
+test('valid property defined on controller when mixin used', function(assert) {
+    assert.equal(controller.get('emailValidation'), true);
+    assert.equal(controller.get('nameValidation'), true);
+    assert.equal(controller.get('valid'), true);
     model.set('email', '');
-    equal(controller.get('valid'), false);
+    assert.equal(controller.get('valid'), false);
     model.set('email', 'hi@hi.com');
-    equal(controller.get('valid'), true);
+    assert.equal(controller.get('valid'), true);
     model.set('name', '');
-    equal(controller.get('valid'), false);
+    assert.equal(controller.get('valid'), false);
     model.set('name', 'x');
-    equal(controller.get('valid'), true);
+    assert.equal(controller.get('valid'), true);
 });
