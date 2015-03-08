@@ -43,10 +43,10 @@ test('adding and removing elements from the other array will keep validations in
   andThen(function() {
     assert.equal(find(FIRST_DISPLAY_NAME_ERROR_FIELD).hasClass('hidden'), true);
     assert.equal(find(SECOND_DISPLAY_NAME_ERROR_FIELD).hasClass('hidden'), true);
-    // assert.equal(find(THIRD_DISPLAY_NAME_ERROR_FIELD).hasClass('hidden'), true);
-    // assert.equal(find(FIRST_TOS_ERROR_FIELD).hasClass('hidden'), true);
-    // assert.equal(find(SECOND_TOS_ERROR_FIELD).hasClass('hidden'), true);
-    // assert.equal(find(THIRD_TOS_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(THIRD_DISPLAY_NAME_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(FIRST_TOS_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(SECOND_TOS_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(THIRD_TOS_ERROR_FIELD).hasClass('hidden'), true);
   });
   click(SAVE_BUTTON);
   andThen(function() {
