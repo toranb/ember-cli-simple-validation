@@ -52,17 +52,3 @@ test('validate attr with regex will validate using the given pattern', function(
     model.set('email', 'hi@hi.com');
     assert.equal(controller.get('emailValidation'), true);
 });
-
-test('valid property defined on controller when mixin used', function(assert) {
-    assert.equal(controller.get('emailValidation'), true);
-    assert.equal(controller.get('nameValidation'), true);
-    assert.equal(controller.get('valid'), true);
-    model.set('email', '');
-    assert.equal(controller.get('valid'), false);
-    model.set('email', 'hi@hi.com');
-    assert.equal(controller.get('valid'), true);
-    model.set('name', '');
-    assert.equal(controller.get('valid'), false);
-    model.set('name', 'x');
-    assert.equal(controller.get('valid'), true);
-});

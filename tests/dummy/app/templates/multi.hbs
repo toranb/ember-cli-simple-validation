@@ -1,0 +1,18 @@
+{{#each model as |person index|}}
+  <div class="name-parent-div">
+    {{input value=person.name placeholder="name"}}
+    {{#validation-error-field submitted=submitted className="red" field="name" model=person index=index}}invalid name{{/validation-error-field}}
+  </div>
+
+  <div class="rando-parent-div">
+    {{input value=person.rando placeholder="rando"}}
+    {{#validation-error-field submitted=submitted className="red" field="rando" model=person index=index}}invalid rando{{/validation-error-field}}
+  </div>
+
+  <button class="remove" {{action "remove" person}}>Remove</button>
+{{/each}}
+
+<button class="save" {{action "save"}}>Save</button>
+
+<br />
+<button class="add" {{action "add"}}>Add Another</button>

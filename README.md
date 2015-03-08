@@ -94,6 +94,30 @@ The conventions that are required to use this library.
 5) The css class that is added to the span is "hidden"
 ```
 
+## What about ArrayControllers?
+
+To validate each field on your ArrayController you would first declare the controller
+
+```js
+import Ember from "ember";
+import {ValidationMixin, validateEach} from "ember-cli-simple-validation/mixins/validate";
+
+export default Ember.ArrayController.extend(ValidationMixin, {
+    name: validateEach("name")
+});
+```
+
+Next add the validation-error-field component to your templates each loop
+
+```js
+{{#each model as |person index|}}
+  <div class="name-parent-div">
+    {{input value=person.name placeholder="name"}}
+    {{#validation-error-field submitted=submitted field="name" model=person index=index}}invalid name{{/validation-error-field}}
+  </div>
+{{/each}}
+```
+
 ## Running the unit tests
 
     npm install

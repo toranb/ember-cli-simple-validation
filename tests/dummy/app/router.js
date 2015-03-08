@@ -9,6 +9,7 @@ Router.map(function() {
     this.route("add", {path: "/"});
     this.route("edit", {path: "/edit"});
     this.route("success", {path: "/success"});
+    this.route("multi", {path: "/multi"});
 });
 
 export default Router;
