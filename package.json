@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-simple-validation",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "ember-cli addon that provides simple form validation",
   "directories": {
     "doc": "doc",
