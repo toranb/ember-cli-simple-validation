@@ -1,0 +1,18 @@
+{{#each model as |other index|}}
+  <div class="display-name-parent-div">
+    {{input value=other.displayName placeholder="displayName"}}
+    {{#validation-error-field submitted=submitted field="displayName" model=other index=index}}invalid displayName{{/validation-error-field}}
+  </div>
+
+  <div class="tos-parent-div">
+    {{input checked=other.tos type="checkbox"}}
+    {{#validation-error-field submitted=submitted field="tos" model=other index=index}}invalid tos{{/validation-error-field}}
+  </div>
+
+  <button class="remove" {{action "remove" other}}>Remove</button>
+{{/each}}
+
+<button class="save" {{action "save"}}>Save</button>
+
+<br />
+<button class="add" {{action "add"}}>Add Another</button>

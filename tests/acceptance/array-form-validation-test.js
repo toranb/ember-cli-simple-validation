@@ -60,12 +60,18 @@ test('clicking save will not transition to success when only the last field is v
   andThen(function() {
     assert.equal(currentURL(), '/multi');
   });
+  fillIn(THIRD_RANDO_INPUT, VALID_RANDO);
+  andThen(function() {
+    assert.equal(currentURL(), '/multi');
+  });
+  fillIn(THIRD_NAME_INPUT, VALID_NAME);
+  andThen(function() {
+    assert.equal(currentURL(), '/multi');
+  });
   fillIn(FIRST_NAME_INPUT, VALID_NAME);
   fillIn(SECOND_NAME_INPUT, VALID_NAME);
-  fillIn(THIRD_NAME_INPUT, VALID_NAME);
   fillIn(FIRST_RANDO_INPUT, VALID_RANDO);
   fillIn(SECOND_RANDO_INPUT, VALID_RANDO);
-  fillIn(THIRD_RANDO_INPUT, VALID_RANDO);
   click(SAVE_BUTTON);
   andThen(function() {
     assert.equal(currentURL(), '/success');

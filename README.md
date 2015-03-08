@@ -96,25 +96,31 @@ The conventions that are required to use this library.
 
 ## What about ArrayControllers?
 
-To validate each field on your ArrayController you would first declare the controller
+To validate each field on your ArrayController first declare the controller with a validateEach attribute for each property
 
 ```js
 import Ember from "ember";
 import {ValidationMixin, validateEach} from "ember-cli-simple-validation/mixins/validate";
 
 export default Ember.ArrayController.extend(ValidationMixin, {
-    name: validateEach("name")
+    name: validateEach("name"),
+    actions: {
+        save: function() {
+            this.set("submitted", true);
+            if(this.get("valid")) {
+                //executed when all fields are valid
+            }
+        }
+    }
 });
 ```
 
-Next add the validation-error-field component to your templates each loop
+Next add the validation-error-field component to the template
 
 ```js
 {{#each model as |person index|}}
-  <div class="name-parent-div">
     {{input value=person.name placeholder="name"}}
     {{#validation-error-field submitted=submitted field="name" model=person index=index}}invalid name{{/validation-error-field}}
-  </div>
 {{/each}}
 ```
 
