@@ -262,3 +262,39 @@ test('adding and removing elements from the array will keep validations in sync'
     assert.equal(currentURL(), '/success');
   });
 });
+
+test('xxx removing invalid models from array will allow success page', function(assert) {
+  visit('/multi');
+  andThen(function() {
+    assert.equal(find(FIRST_NAME_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(SECOND_NAME_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(THIRD_NAME_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(FIRST_RANDO_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(SECOND_RANDO_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(THIRD_RANDO_ERROR_FIELD).hasClass('hidden'), true);
+  });
+  fillIn(FIRST_NAME_INPUT, VALID_NAME);
+  fillIn(FIRST_RANDO_INPUT, VALID_RANDO);
+  click(SAVE_BUTTON);
+  andThen(function() {
+    assert.equal(find('.name-parent-div span').length, 3);
+    assert.equal(currentURL(), '/multi');
+    assert.equal(find(FIRST_NAME_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(SECOND_NAME_ERROR_FIELD).hasClass('hidden'), false);
+    assert.equal(find(THIRD_NAME_ERROR_FIELD).hasClass('hidden'), false);
+    assert.equal(find(FIRST_RANDO_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(SECOND_RANDO_ERROR_FIELD).hasClass('hidden'), false);
+    assert.equal(find(THIRD_RANDO_ERROR_FIELD).hasClass('hidden'), false);
+  });
+  click('.remove:eq(2)');
+  click('.remove:eq(1)');
+  andThen(function() {
+    assert.equal(find('.name-parent-div span').length, 1);
+    assert.equal(find(FIRST_NAME_ERROR_FIELD).hasClass('hidden'), true);
+    assert.equal(find(FIRST_RANDO_ERROR_FIELD).hasClass('hidden'), true);
+  });
+  click(SAVE_BUTTON);
+  andThen(function() {
+    assert.equal(currentURL(), '/success');
+  });
+});
