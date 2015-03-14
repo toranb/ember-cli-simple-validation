@@ -20,7 +20,7 @@ The goals of this project are simple:
 
 ## Demo
 
-http://emberjs.jsbin.com/fovolu/2/
+http://emberjs.jsbin.com/fovolu/6/
 
 ## Installation
 
