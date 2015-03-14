@@ -12,7 +12,7 @@ function eachAttrs(mixin) {
     factory(mixin).eachComputedProperty(function(field, meta) {
         if (meta.validateEach) {
             dynamicEachAttrs.push(field);
-            attributes.push({field: field, options: meta.options});
+            attributes.push({field: field, options: meta.options, fieldName: meta.fieldName});
         }
     });
     return attributes;
@@ -66,10 +66,10 @@ var ValidationMixin = Ember.Mixin.create({
             self.get("model").forEach(function(obj, index) {
                 Ember.defineProperty(self, "%@1%@2Validation".fmt(attr.field, index), Ember.computed(function() {
                     if(self.get("model").objectAt(index)) {
-                        var value = self.get("model").objectAt(index).getWithDefault(attr.field, "");
+                        var value = self.get("model").objectAt(index).getWithDefault(attr.fieldName, "");
                         return run(value, attr.options, self, index);
                     }
-                }).property("model.@each." + attr.field));
+                }).property("model.@each." + attr.fieldName));
             });
         });
     }.observes("model.@each.isDone")
@@ -82,10 +82,10 @@ var validate = function(field, options) {
     }.property(field);
 };
 
-var validateEach = function(field, options) {
+var validateEach = function(fieldName, options) {
     return function() {
         return true;
-    }.property().meta({validateEach: true, options: options});
+    }.property().meta({validateEach: true, options: options, fieldName: fieldName});
 };
 
 export { ValidationMixin, validate, validateEach };

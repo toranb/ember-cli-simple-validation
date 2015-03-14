@@ -1,0 +1,9 @@
+{{#each model as |person index|}}
+  <div class="name-parent-div">
+    {{input value=person.name placeholder="name"}}
+    {{#validation-error-field submitted=submitted className="basic" field="name" model=person index=index validation="basic"}}invalid basic{{/validation-error-field}}
+    {{#validation-error-field submitted=submitted className="len" field="name" model=person index=index validation="len"}}invalid len{{/validation-error-field}}
+  </div>
+{{/each}}
+
+<button class="save" {{action "save"}}>Save</button>

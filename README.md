@@ -120,7 +120,7 @@ Next add the validation-error-field component to the template
 ```js
 {{#each model as |person index|}}
     {{input value=person.name placeholder="name"}}
-    {{#validation-error-field submitted=submitted field="name" model=person index=index}}invalid name{{/validation-error-field}}
+    {{#validation-error-field submitted=submitted field="name" model=person index=index validation="name"}}invalid name{{/validation-error-field}}
 {{/each}}
 ```
 

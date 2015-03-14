@@ -10,6 +10,7 @@ Router.map(function() {
     this.route("edit", {path: "/edit"});
     this.route("success", {path: "/success"});
     this.route("multi", {path: "/multi"});
+    this.route("many", {path: "/many"});
     this.route("other", {path: "/other"});
 });
 
