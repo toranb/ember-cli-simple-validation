@@ -12,6 +12,7 @@ Router.map(function() {
     this.route("multi", {path: "/multi"});
     this.route("many", {path: "/many"});
     this.route("other", {path: "/other"});
+    this.route("hash", {path: "/hash"});
 });
 
 export default Router;

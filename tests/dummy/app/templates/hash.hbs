@@ -1,0 +1,11 @@
+<div class="name-parent-div">
+  {{input value=model.first.name placeholder="name"}}
+  {{#validation-error-field submitted=submitted field="name" validation=nameValidation}}invalid name{{/validation-error-field}}
+</div>
+
+<div class="tos-parent-div">
+  {{input checked=model.last.tos type="checkbox"}}
+  {{#validation-error-field submitted=submitted field="tos" validation=tosValidation}}invalid tos{{/validation-error-field}}
+</div>
+
+<button class="save" {{action "save"}}>Save</button>
