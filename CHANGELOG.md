@@ -1,6 +1,28 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.0.0
+-----
+
+* [PERIPHERAL]: updated to ember 1.11.3
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/72a188b0720e1befd1fba76535c34892925bbe88))
+
+* [DOCS]: updated the demo jsbin for 1.0 release
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/2dbab5095943f7e46bc293bd1900629b58049af2))
+
+* [TEST]: added test to show edit with rsvp hash model(s)
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/e489b40afbd84bba9599b3c830d97c66c7bf2ead))
+
+* [TEST]: added test/example for routes that return rsvp hash
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/404999beec51699e150bddcd7943afaf5d5e3b58))
+
+* [DEPENDENCY] updated dependencies and readme for 1.0 release
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/91d333708f3585e23271f94c3b862afa3e88d7eb))
+
+* [BUILD]: added change log to track changes over time
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/a372bafcc76f5449bbd4520ce55e3144bc9dfc30))
+
+
 0.4.1
 -----
 
