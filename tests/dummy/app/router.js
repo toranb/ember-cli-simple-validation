@@ -13,6 +13,7 @@ Router.map(function() {
     this.route("many", {path: "/many"});
     this.route("other", {path: "/other"});
     this.route("hash", {path: "/hash"});
+    this.route("edits", {path: "/edits"});
 });
 
 export default Router;

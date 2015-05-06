@@ -74,3 +74,31 @@ test('rsvp hash with 2 bound models will validate correctly', function(assert) {
         assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
     });
 });
+
+test('editing a form with 2 bound rsvp hash models will validate correctly', function(assert) {
+    visit('/edits');
+    andThen(function() {
+        assert.equal(find(NAME_ERROR_FIELD).hasClass('hidden'), true);
+        assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
+    });
+    fillIn(NAME_INPUT, '');
+    andThen(function() {
+        assert.equal(find(NAME_ERROR_FIELD).hasClass('hidden'), false);
+        assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
+    });
+    fillIn(NAME_INPUT, VALID_NAME);
+    andThen(function() {
+        assert.equal(find(NAME_ERROR_FIELD).hasClass('hidden'), true);
+        assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
+    });
+    click(TOS_CHECKBOX);
+    andThen(function() {
+        assert.equal(find(NAME_ERROR_FIELD).hasClass('hidden'), true);
+        assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), false);
+    });
+    click(TOS_CHECKBOX);
+    andThen(function() {
+        assert.equal(find(NAME_ERROR_FIELD).hasClass('hidden'), true);
+        assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
+    });
+});
