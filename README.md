@@ -26,15 +26,15 @@ http://emberjs.jsbin.com/tafamiriwi/1/
 
 ```
 1) npm install ember-cli-simple-validation --save-dev
-2) add isDirty computed for the field you validate (username example below)
+2) add isPrimed computed for the field you validate (username example below)
 ```
 
 ```js
 Ember.Object.extend({
     username: null,
-    usernameIsDirty: false,
+    usernameIsPrimed: false,
     usernameChanged: function () {
-        this.set("usernameIsDirty", true);
+        this.set("usernameIsPrimed", true);
     }.observes("username")
 });
 ```
@@ -114,7 +114,7 @@ The conventions that are required to use this library.
 1) The validation attributes you declare in the controller must have the suffix "Validation" (ie- nameValidation, emailValidation)
 2) The controller action must set a property called submitted/and you must pass this into each component as shown above
 3) The mixin will add a computed property called "valid" that you can use to confirm each field is valid
-4) The model needs to support dirty tracking at the field level (ember-cli-simple-store provides the model and dirty tracked attribute but ember-data and ember object will work if you add the isDirty computed)
+4) The model needs to support primed tracking at the field level (ember-cli-simple-store provides the model and prime aware attribute but ember-data and ember object will work if you add the isPrimed computed)
 5) The css class that is added to the span is "hidden"
 ```
 
