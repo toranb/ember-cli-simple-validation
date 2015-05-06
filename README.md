@@ -20,7 +20,7 @@ The goals of this project are simple:
 
 ## Demo
 
-http://emberjs.jsbin.com/tafamiriwi/1/
+http://emberjs.jsbin.com/gobemu/1/
 
 ## Installation with ember-data (or vanilla ember object)
 
