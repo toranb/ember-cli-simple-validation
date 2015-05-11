@@ -5,7 +5,7 @@ var ManyRoute = Ember.Route.extend({
     model: function() {
         var one = Many.create();
         var two = Many.create();
-        return [one, two];
+        return Ember.A([one, two]);
     }
 });
 

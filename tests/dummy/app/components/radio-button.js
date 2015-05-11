@@ -4,9 +4,9 @@ export default Ember.Component.extend({
     tagName: "input",
     type: "radio",
     attributeBindings: ["id", "checked", "name", "type", "value"],
-    checked: function() {
+    checked: Ember.computed("groupValue", "value", function() {
         return this.get("groupValue") === this.get("value");
-    }.property("groupValue", "value"),
+    }),
     change: function(event) {
         var groupValue = this.get("groupValue");
         var value = event.target.checked ? this.get("value") : undefined;
