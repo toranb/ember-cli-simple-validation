@@ -1,6 +1,13 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.0.1
+-----
+
+* [ENHANCEMENT] ember-cli -> 0.2.3 and removing prototype extensions
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/pull/5))
+
+
 1.0.0
 -----
 
