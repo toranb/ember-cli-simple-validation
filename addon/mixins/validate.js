@@ -27,7 +27,7 @@ function attrs(mixin) {
     });
     dynamicEachAttrs.forEach(function(field) {
         mixin.get("model").forEach(function(model, index) {
-            attributes.push("%@1%@2Validation".fmt(field, index));
+            attributes.push(field + index + "Validation");
         });
     });
     return attributes;
@@ -51,20 +51,20 @@ function run(value, options, context) {
 }
 
 var ValidationMixin = Ember.Mixin.create({
-    valid: function() {
+    valid: Ember.computed(function() {
         var self = this;
         var result = true;
         attrs(this).forEach(function(attr) {
             result = self.get(attr) && result;
         });
         return result;
-    }.property(),
-    each: function() {
+    }),
+    each: Ember.observer("model.@each.isDone", function() {
         var self = this;
         this.notifyPropertyChange("valid");
         eachAttrs(this).forEach(function(attr) {
             self.get("model").forEach(function(obj, index) {
-                Ember.defineProperty(self, "%@1%@2Validation".fmt(attr.field, index), Ember.computed(function() {
+                Ember.defineProperty(self, attr.field + index + "Validation", Ember.computed(function() {
                     if(self.get("model").objectAt(index)) {
                         var value = self.get("model").objectAt(index).getWithDefault(attr.fieldName, "");
                         return run(value, attr.options, self, index);
@@ -72,20 +72,20 @@ var ValidationMixin = Ember.Mixin.create({
                 }).property("model.@each." + attr.fieldName));
             });
         });
-    }.observes("model.@each.isDone")
+    })
 });
 
 var validate = function(field, options) {
-    return function() {
+    return Ember.computed(field, function() {
         var value = this.getWithDefault(field, "");
         return run(value, options, this);
-    }.property(field);
+    });
 };
 
 var validateEach = function(fieldName, options) {
-    return function() {
+    return Ember.computed(function() {
         return true;
-    }.property().meta({validateEach: true, options: options, fieldName: fieldName});
+    }).meta({validateEach: true, options: options, fieldName: fieldName});
 };
 
 export { ValidationMixin, validate, validateEach };

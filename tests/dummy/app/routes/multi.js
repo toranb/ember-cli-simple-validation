@@ -6,7 +6,7 @@ var MultiRoute = Ember.Route.extend({
         var one = Person.create();
         var two = Person.create();
         var three = Person.create();
-        return [one, two, three];
+        return Ember.A([one, two, three]);
     }
 });
 

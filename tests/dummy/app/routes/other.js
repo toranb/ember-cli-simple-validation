@@ -6,7 +6,7 @@ var OtherRoute = Ember.Route.extend({
         var one = Other.create();
         var two = Other.create();
         var three = Other.create();
-        return [one, two, three];
+        return Ember.A([one, two, three]);
     }
 });
 

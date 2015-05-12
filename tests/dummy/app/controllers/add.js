@@ -14,7 +14,7 @@ export default Ember.Controller.extend(ValidationMixin, {
     radeoValidation: validate("model.radeo"),
     tosValidation: validate("model.tos"),
     thingValidation: validate("model.thing"),
-    things: [{id: 1}, {id: 2}, {id: 3}, {id: 4}],
+    things: Ember.A([{id: 1}, {id: 2}, {id: 3}, {id: 4}]),
     actions: {
         save: function() {
             this.set("submitted", true);

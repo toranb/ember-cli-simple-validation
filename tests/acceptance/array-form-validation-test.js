@@ -263,7 +263,7 @@ test('adding and removing elements from the array will keep validations in sync'
   });
 });
 
-test('xxx removing invalid models from array will allow success page', function(assert) {
+test('removing invalid models from array will allow success page', function(assert) {
   visit('/multi');
   andThen(function() {
     assert.equal(find(FIRST_NAME_ERROR_FIELD).hasClass('hidden'), true);
