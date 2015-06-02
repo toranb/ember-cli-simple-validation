@@ -33,9 +33,9 @@ http://emberjs.jsbin.com/gobemu/2/
 Ember.Object.extend({
     username: null,
     usernameIsPrimed: false,
-    usernameChanged: function () {
+    usernameChanged: Ember.observer("username", function () {
         this.set("usernameIsPrimed", true);
-    }.observes("username")
+    })
 });
 ```
 
