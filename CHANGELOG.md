@@ -1,6 +1,16 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.0.2
+-----
+
+* [DEPENDENCY]: updated ember-cli-simple-store 2.2.0 
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/0740bba4c213baac7826dc7ca2f338c5eab03615))
+
+* [DOCS]: Update README.md
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/pull/7))
+
+
 1.0.1
 -----
 
