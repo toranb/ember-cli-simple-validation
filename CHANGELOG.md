@@ -1,6 +1,13 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.0.3
+-----
+
+* [DOCS]: added components/pods/ember 1.13 example to the readme
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/ee5b9a66d89a33c77ed185b2e8b1b314674b7ca4))
+
+
 1.0.2
 -----
 
