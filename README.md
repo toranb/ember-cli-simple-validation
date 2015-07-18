@@ -163,6 +163,10 @@ Next add the validation-error-field component to the template
 4) localhost:4200
 ```
 
+## Example with components and ember 1.13+
+
+https://github.com/toranb/ember-pure-components-example
+
 ## License
 
 Copyright © 2015 Toran Billups http://toranbillups.com
