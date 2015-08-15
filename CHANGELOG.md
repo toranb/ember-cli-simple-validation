@@ -1,6 +1,25 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.1.0
+-----
+
+* [DEPENDENCY]: updated to ember 1.13.8
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/a196795e14aaa121228e4acd992bc97e24b04e38))
+
+* [DEPENDENCY]: updated to ember 1.13.7
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/49933b4604ac0b497455b3d0a17d6a74f4207ac1))
+
+* [BUG]: fixed the leaky state bug found upgrading to ember 1.13.7
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/ae89493bc0dee1faa579e9ea7ab94c265426df55))
+
+* [PERIPHERAL]: updating to ember-cli to 1.13.8
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/036bef65db9ed425ae9cd519bb66bf7cbd5cbdb6))
+
+* [DEPENDENCY]: updated to ember 1.13.6
+  ([commit](https://github.com/toranb/ember-cli-simple-validation/commit/0cda9d5619e496a1495fa2b41cb881715937b632))
+
+
 1.0.3
 -----
 
