@@ -1,17 +1,13 @@
 import Ember from "ember";
 
-var dynamicEachAttrs = [];
-
 function factory(mixin) {
     return mixin.get("constructor.ClassMixin.ownerConstructor");
 }
 
 function eachAttrs(mixin) {
     var attributes = [];
-    dynamicEachAttrs = [];
     factory(mixin).eachComputedProperty(function(field, meta) {
         if (meta.validateEach) {
-            dynamicEachAttrs.push(field);
             attributes.push({field: field, options: meta.options, fieldName: meta.fieldName});
         }
     });
@@ -20,15 +16,15 @@ function eachAttrs(mixin) {
 
 function attrs(mixin) {
     var attributes = [];
-    factory(mixin).eachComputedProperty(function(field) {
+    factory(mixin).eachComputedProperty(function(field, meta) {
         if (field.indexOf("Validation") > 0) {
             attributes.push(field);
         }
-    });
-    dynamicEachAttrs.forEach(function(field) {
-        mixin.get("model").forEach(function(model, index) {
-            attributes.push(field + index + "Validation");
-        });
+        if (meta.validateEach) {
+            mixin.get("model").forEach(function(model, index) {
+                attributes.push(field + index + "Validation");
+            });
+        }
     });
     return attributes;
 }
