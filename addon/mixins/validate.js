@@ -60,12 +60,12 @@ var ValidationMixin = Ember.Mixin.create({
         this.notifyPropertyChange("valid");
         eachAttrs(this).forEach(function(attr) {
             self.get("model").forEach(function(obj, index) {
-                Ember.defineProperty(self, attr.field + index + "Validation", Ember.computed(function() {
+                Ember.defineProperty(self, attr.field + index + "Validation", Ember.computed("model.@each." + attr.fieldName, function() {
                     if(self.get("model").objectAt(index)) {
                         var value = self.get("model").objectAt(index).getWithDefault(attr.fieldName, "");
                         return run(value, attr.options, self, index);
                     }
-                }).property("model.@each." + attr.fieldName));
+                }));
             });
         });
     })

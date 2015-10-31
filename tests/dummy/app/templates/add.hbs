@@ -36,8 +36,8 @@
 <div class="thing-parent-div">
   {{view "select"
   prompt="select a thing"
-  contentBinding="controller.things"
-  valueBinding="model.thing"
+  content=controller.things
+  value=model.thing
   optionValuePath="content.id"
   optionLabelPath="content.id"}}
   {{#validation-error-field submitted=submitted field="thing" model=model validation=thingValidation}}invalid thing{{/validation-error-field}}
