@@ -1,0 +1,8 @@
+<div class="name-div">
+{{input value=model.name placeholder="name"}}
+{{#validation-error-field submitted=submitted field="name" model=model validation=minValidation}}invalid min{{/validation-error-field}}
+{{#validation-error-field submitted=submitted field="name" model=model validation=maxValidation}}invalid max{{/validation-error-field}}
+{{#validation-error-field submitted=submitted field="name" model=model validation=otherValidation}}invalid other{{/validation-error-field}}
+</div>
+
+<button class="save" {{action "save"}}>Save</button>

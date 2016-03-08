@@ -14,6 +14,7 @@ Router.map(function() {
     this.route("other", {path: "/other"});
     this.route("hash", {path: "/hash"});
     this.route("edits", {path: "/edits"});
+    this.route("dry", {path: "/dry"});
 });
 
 export default Router;
