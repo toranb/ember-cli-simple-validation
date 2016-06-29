@@ -11,6 +11,7 @@ Router.map(function() {
     this.route("success", {path: "/success"});
     this.route("multi", {path: "/multi"});
     this.route("many", {path: "/many"});
+    this.route("many-single-property", {path: "/many-single-property"});
     this.route("other", {path: "/other"});
     this.route("hash", {path: "/hash"});
     this.route("edits", {path: "/edits"});
