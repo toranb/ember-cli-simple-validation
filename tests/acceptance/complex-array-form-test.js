@@ -11,7 +11,7 @@ const TOS_CHECKBOX = '.tos-parent-div input';
 const TOS_ERROR_FIELD = '.tos-parent-div span';
 const SAVE_BUTTON = 'button.save';
 
-module('Acceptance: Complex Form Test', {
+module('Acceptance: Complex Array Form Test', {
     setup: function() {
         application = startApp();
     },
@@ -21,14 +21,14 @@ module('Acceptance: Complex Form Test', {
 });
 
 test('form is valid when checkbox two is selected and tos not checked', function(assert) {
-    visit('/complex');
+    visit('/manycomplex');
     andThen(function() {
         assert.equal(find(RADEO_ERROR_FIELD).hasClass('hidden'), true);
         assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
     });
     click(SAVE_BUTTON);
     andThen(function() {
-        assert.equal(currentURL(), '/complex');
+        assert.equal(currentURL(), '/manycomplex');
         assert.equal(find(RADEO_ERROR_FIELD).hasClass('hidden'), false);
         assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), false);
     });
@@ -43,15 +43,15 @@ test('form is valid when checkbox two is selected and tos not checked', function
     });
 });
 
-test('form is valid when checkbox one is selected and tos checked', function(assert) {
-    visit('/complex');
+test('toran form is valid when checkbox one is selected and tos checked', function(assert) {
+    visit('/manycomplex');
     andThen(function() {
         assert.equal(find(RADEO_ERROR_FIELD).hasClass('hidden'), true);
         assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), true);
     });
     click(SAVE_BUTTON);
     andThen(function() {
-        assert.equal(currentURL(), '/complex');
+        assert.equal(currentURL(), '/manycomplex');
         assert.equal(find(RADEO_ERROR_FIELD).hasClass('hidden'), false);
         assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), false);
     });
@@ -68,7 +68,7 @@ test('form is valid when checkbox one is selected and tos checked', function(ass
     click(TOS_CHECKBOX);
     click(SAVE_BUTTON);
     andThen(function() {
-        assert.equal(currentURL(), '/complex');
+        assert.equal(currentURL(), '/manycomplex');
         assert.equal(find(RADEO_ERROR_FIELD).hasClass('hidden'), false);
         assert.equal(find(TOS_ERROR_FIELD).hasClass('hidden'), false);
     });
