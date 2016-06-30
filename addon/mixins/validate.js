@@ -71,11 +71,19 @@ var ValidationMixin = Ember.Mixin.create({
     })
 });
 
-var validate = function(field, options) {
-    return Ember.computed(field, function() {
-        var value = this.getWithDefault(field, "");
+var validate = (...args) => {
+    var options;
+
+    if (typeof args[args.length - 1] !== 'string') {
+        options = args.pop();
+    }
+
+    var computedProperty = Ember.computed(function() {
+        var value = this.getWithDefault(args[0], '');
         return run(value, options, this);
     });
+
+    return computedProperty.property.apply(computedProperty, args);
 };
 
 var validateEach = function(fieldName, options) {
