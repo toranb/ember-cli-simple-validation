@@ -148,6 +148,15 @@ Next add the validation-error-field component to the template
 {{/each}}
 ```
 
+The array based validation also supports the ability to re-compute each field when any model in the array has the specific field updated. To opt-in pass the array property like you see in the example below.
+
+```js
+{{#each model as |person index|}}
+    {{input value=person.name placeholder="name"}}
+    {{#validation-error-field array=model submitted=submitted field="name" model=person index=index validation="name"}}invalid name{{/validation-error-field}}
+{{/each}}
+```
+
 ## Running the unit tests
 
     npm install
