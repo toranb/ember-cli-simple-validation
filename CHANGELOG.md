@@ -1,6 +1,13 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.2.0
+-----
+
+* [FEATURE]: added support for multi field validation when array is present
+  ([#21](https://github.com/toranb/ember-cli-simple-validation/pull/21))
+
+
 1.1.0
 -----
 
