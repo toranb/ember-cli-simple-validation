@@ -29,7 +29,7 @@ module('Acceptance: Multi Starting Empty Validation', {
   }
 });
 
-test('toran clicking save will not transition to success when only the last field is valid', function(assert) {
+test('clicking save will not transition to success when only the last field is valid', function(assert) {
   visit('/multi-starting-empty');
   click(ADD_BUTTON);
   click(ADD_BUTTON);
