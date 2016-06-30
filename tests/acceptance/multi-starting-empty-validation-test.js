@@ -29,7 +29,7 @@ module('Acceptance: Multi Starting Empty Validation', {
   }
 });
 
-test('clicking save will not transition to success when only the last field is valid', function(assert) {
+test('unique name validation will fire for newly added models and when a model is removed', function(assert) {
   visit('/multi-starting-empty');
   click(ADD_BUTTON);
   click(ADD_BUTTON);
