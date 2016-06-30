@@ -44,10 +44,14 @@ test('all people must have a unique name', function (assert) {
         assert.equal(find(SECOND_NAME_INPUT_ERROR).hasClass('hidden'), false);
         assert.equal(find(THIRD_NAME_INPUT_ERROR).hasClass('hidden'), true);
     });
-    fillIn(FIRST_NAME_INPUT, "Bob");
+    fillIn(FIRST_NAME_INPUT, 'Bob');
     andThen(function () {
         assert.equal(find(FIRST_NAME_INPUT_ERROR).hasClass('hidden'), true);
         assert.equal(find(THIRD_NAME_INPUT_ERROR).hasClass('hidden'), true);
         assert.equal(find(SECOND_NAME_INPUT_ERROR).hasClass('hidden'), true);
+    });
+    click(SAVE_BUTTON);
+    andThen(function() {
+        assert.equal(currentURL(), '/success');
     });
 });
