@@ -11,7 +11,7 @@ const TOS_CHECKBOX = '.tos-parent-div input';
 const TOS_ERROR_FIELD = '.tos-parent-div span';
 const SAVE_BUTTON = 'button.save';
 
-module('toran Acceptance: Complex Form Test', {
+module('Acceptance: Complex Form Test', {
     setup: function() {
         application = startApp();
     },

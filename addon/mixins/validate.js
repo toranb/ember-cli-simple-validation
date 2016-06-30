@@ -60,9 +60,10 @@ var ValidationMixin = Ember.Mixin.create({
         this.notifyPropertyChange("valid");
         eachAttrs(this).forEach(function(attr) {
             self.get("model").forEach(function(obj, index) {
-                Ember.defineProperty(self, attr.field + index + "Validation", Ember.computed("model.@each." + attr.fieldName, function() {
+                var cpStringForExpansion = "model.@each.{" + attr.fieldName.join(",") + "}";
+                Ember.defineProperty(self, attr.field + index + "Validation", Ember.computed(cpStringForExpansion, function() {
                     if(self.get("model").objectAt(index)) {
-                        var value = self.get("model").objectAt(index).getWithDefault(attr.fieldName, "");
+                        var value = self.get("model").objectAt(index).getWithDefault(attr.fieldName[0], "");
                         return run(value, attr.options, self, index);
                     }
                 }));
@@ -86,10 +87,18 @@ var validate = (...args) => {
     return computedProperty.property.apply(computedProperty, args);
 };
 
-var validateEach = function(fieldName, options) {
-    return Ember.computed(function() {
+var validateEach = (...args) => {
+    var options;
+
+    if (typeof args[args.length - 1] !== 'string') {
+        options = args.pop();
+    }
+
+    var computedProperty = Ember.computed(function() {
         return true;
-    }).meta({validateEach: true, options: options, fieldName: fieldName});
+    }).meta({validateEach: true, options: options, fieldName: args});
+
+    return computedProperty.property.apply(computedProperty, args);
 };
 
 export { ValidationMixin, validate, validateEach };

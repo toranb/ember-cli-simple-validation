@@ -1,0 +1,23 @@
+{{#each model as |person index|}}
+  <div class="radeo-parent-div">
+    <label>select an option</label>
+    <div class="the-radio-buttons">
+      <div class="radio-button-one">
+        {{radio-button groupValue=person.radeo id=(combine-two "radio01" index) value=1}}
+        <label for={{combine-two "radio01" index}}>one (will require tos)</label>
+      </div>
+      <div class="radio-button-two">
+        {{radio-button groupValue=person.radeo id=(combine-two "radio02" index) value=2}}
+        <label for={{combine-two "radio02" index}}>two (does not require tos)</label>
+      </div>
+    </div>
+    {{#validation-error-field array=model index=index submitted=submitted className="red" field="radeo,tos" model=person validation="one"}}invalid radeo{{/validation-error-field}}
+  </div>
+  
+  <div class="tos-parent-div">
+  {{input checked=person.tos type="checkbox"}} agree to terms
+  {{#validation-error-field array=model index=index submitted=submitted className="red" field="tos,radeo" model=person validation="two"}}invalid tos{{/validation-error-field}}
+  </div>
+{{/each}}
+
+<button class="save" {{action "save"}}>Save</button>
