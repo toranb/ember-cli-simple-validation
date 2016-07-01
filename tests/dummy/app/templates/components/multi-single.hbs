@@ -1,0 +1,8 @@
+{{list-validation model=model.nested submitted=submitted}}
+
+<div class="name-parent-div">
+{{input value=model.extra placeholder="extra"}}
+{{#validation-error-field submitted=submitted field="extra" model=model validation=extraValidation}}invalid extra{{/validation-error-field}}
+</div>
+
+<button class="save" {{action "save"}}>Save</button>

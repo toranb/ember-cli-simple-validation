@@ -1,8 +1,1 @@
-{{#each model.list as |person index|}}
-  <div class="name-parent-div">
-    {{input value=person.name placeholder="name"}}
-    {{#validation-error-field array=model.list submitted=submitted delayed=true className="name-input-error" field="name" model=person index=index validation="uniqueName"}}Name must be unique{{/validation-error-field}}
-  </div>
-{{/each}}
-
-<button class="save" {{action "save"}}>Save</button>
+{{multi-single model=model}}

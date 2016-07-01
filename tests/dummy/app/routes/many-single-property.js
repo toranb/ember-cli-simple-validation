@@ -1,11 +1,18 @@
 import Ember from "ember";
-import Many from 'dummy/models/many';
 
 export default Ember.Route.extend({
     model: function() {
-        var one = Many.create();
-        var two = Many.create();
-        var three = Many.create();
-        return Ember.Object.create({list: [one, two, three], extra: ""});
+        var store = this.get('store');
+        store.push('person', {
+            id: 1,
+            name: ""
+        });
+        var nested = store.findOne('person');
+        store.push('many', {
+            id: 1,
+            nested: nested,
+            extra: ""
+        });
+        return store.findOne("many");
     }
 });
