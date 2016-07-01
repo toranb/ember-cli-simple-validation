@@ -43,7 +43,7 @@ test('form is valid when checkbox two is selected and tos not checked', function
     });
 });
 
-test('toran form is valid when checkbox one is selected and tos checked', function(assert) {
+test('form is valid when checkbox one is selected and tos checked', function(assert) {
     visit('/manycomplex');
     andThen(function() {
         assert.equal(find(RADEO_ERROR_FIELD).hasClass('hidden'), true);
