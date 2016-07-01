@@ -6,6 +6,6 @@ export default Ember.Route.extend({
         var one = Many.create();
         var two = Many.create();
         var three = Many.create();
-        return Ember.A([one, two, three]);
+        return Ember.Object.create({list: [one, two, three], extra: ""});
     }
 });
