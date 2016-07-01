@@ -157,6 +157,133 @@ The array based validation also supports the ability to re-compute each field wh
 {{/each}}
 ```
 
+## What about complex validations involving more than 1 field?
+
+Complex validations that require more than one field look something like the below. In this first example you have a different validation rule based on what radio button is selected.
+
+```js
+import Ember from "ember";
+import {ValidationMixin, validate} from "ember-cli-simple-validation/mixins/validate";
+
+var customFunc = function() {
+    var radeo = this.get("model.radeo");
+    var tos = this.get("model.tos");
+    if (!radeo) {
+        return false;
+    }
+    //option 1 requires tos be checked
+    if (radeo === 1 && tos) {
+        return true;
+    }
+    //option 2 does not require tos be checked
+    return radeo === 2;
+};
+
+export default Ember.Controller.extend(ValidationMixin, {
+    radeoValidation: validate("model.radeo", "model.tos", customFunc),
+    tosValidation: validate("model.radeo", "model.tos", customFunc),
+    actions: {
+        save: function() {
+            this.set("submitted", true);
+            if(this.get("valid")) {
+                this.transitionToRoute("success");
+            }
+        }
+    }
+});
+```
+
+The hbs template would look something like the below.
+
+```js
+<div class="radeo-parent-div">
+  <label>select an option</label>
+  <div class="the-radio-buttons">
+    <div class="radio-button-one">
+      {{radio-button groupValue=model.radeo id="radio01" value=1}}
+      <label for="radio01">one (will require tos)</label>
+    </div>
+    <div class="radio-button-two">
+      {{radio-button groupValue=model.radeo id="radio02" value=2}}
+      <label for="radio02">two (does not require tos)</label>
+    </div>
+  </div>
+  {{#validation-error-field submitted=submitted className="red" field="radeo" model=model validation=radeoValidation}}invalid radeo{{/validation-error-field}}
+</div>
+
+<div class="tos-parent-div">
+{{input checked=model.tos type="checkbox"}} agree to terms
+{{#validation-error-field submitted=submitted className="red" field="tos" model=model validation=tosValidation}}invalid tos{{/validation-error-field}}
+</div>
+
+<button class="save" {{action "save"}}>Save</button>
+```
+
+For complex array validations you first need to pass in the fields JS side as show below.
+
+```js
+import Ember from "ember";
+import {ValidationMixin, validateEach} from "ember-cli-simple-validation/mixins/validate";
+
+var customFunc = function(value, options, model, index) {
+    var arry = model.objectAt(index);
+    var radeo = arry.get("radeo");
+    var tos = arry.get("tos");
+    if (!radeo) {
+        return false;
+    }
+    //option 1 requires tos be checked
+    if (radeo === 1 && tos) {
+        return true;
+    }
+    //option 2 does not require tos be checked
+    return radeo === 2;
+};
+
+var ManyComplexController = Ember.ArrayController.extend(ValidationMixin, {
+    one: validateEach("radeo", "tos", customFunc),
+    two: validateEach("tos", "radeo", customFunc),
+    actions: {
+        save: function() {
+            this.set("submitted", true);
+            if(this.get("valid")) {
+                this.transitionToRoute("success");
+            }
+        }
+    }
+});
+
+export default ManyComplexController;
+```
+
+In addition you need to push in both fields comma delimited using the `fields` attribute in the hbs file as shown below. And finally make sure you pass in the array of models using the `array` attribute as you see in the example below.
+
+```js
+{{#each model as |person index|}}
+  <div class="radeo-parent-div">
+    <label>select an option</label>
+    <div class="the-radio-buttons">
+      <div class="radio-button-one">
+        {{radio-button groupValue=person.radeo id=(combine-two "radio01" index) value=1}}
+        <label for={{combine-two "radio01" index}}>one (will require tos)</label>
+      </div>
+      <div class="radio-button-two">
+        {{radio-button groupValue=person.radeo id=(combine-two "radio02" index) value=2}}
+        <label for={{combine-two "radio02" index}}>two (does not require tos)</label>
+      </div>
+    </div>
+    {{#validation-error-field array=model index=index submitted=submitted className="red" field="radeo,tos" model=person validation="one"}}invalid radeo{{/validation-error-field}}
+  </div>
+  
+  <div class="tos-parent-div">
+  {{input checked=person.tos type="checkbox"}} agree to terms
+  {{#validation-error-field array=model index=index submitted=submitted className="red" field="tos,radeo" model=person validation="two"}}invalid tos{{/validation-error-field}}
+  </div>
+{{/each}}
+
+<button class="save" {{action "save"}}>Save</button>
+```
+
 ## Running the unit tests
 
     npm install
