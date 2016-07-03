@@ -20,7 +20,7 @@ The goals of this project are simple:
 
 ## Demo
 
-http://emberjs.jsbin.com/gobemu/2/
+https://ember-twiddle.com/eba8fbbd3948e2e8e0cb7759a4dcc2c0
 
 ## Installation with ember-data (or vanilla ember object)
 
