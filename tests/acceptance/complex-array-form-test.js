@@ -20,7 +20,7 @@ const TOS_ERROR_FIELD_MODEL_TWO = '.tos-parent-div span:eq(1)';
 
 const SAVE_BUTTON = 'button.save';
 
-module('toran Acceptance: Complex Array Form Test', {
+module('Acceptance: Complex Array Form Test', {
     setup: function() {
         application = startApp();
     },
