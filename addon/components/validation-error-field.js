@@ -6,12 +6,18 @@ var ValidationErrorField = Ember.Component.extend({
     attributeBindings: ["array", "className", "model", "field", "validation", "submitted", "delayed", "index"],
     initialize: Ember.on("init", function() {
         var field = this.get("field");
-        Ember.Binding.from("model." + field).to("fieldName").connect(this);
-        Ember.Binding.from("model." + field + "IsPrimed").to("isPrimed").connect(this);
+        var computedKeys = ["validation", "isPrimed", "submitted"];
 
-        var computedKeys = ["validation", "isPrimed", "submitted", "fieldName"];
         if(this.get("array")) {
-            computedKeys.push("array.@each." + field);
+            var fields = field.split(",");
+            fields.forEach(function(f) {
+                computedKeys.push("array.@each." + f);
+            });
+            Ember.Binding.from("model." + fields[0] + "IsPrimed").to("isPrimed").connect(this);
+        }else{
+            computedKeys.push("fieldName");
+            Ember.Binding.from("model." + field + "IsPrimed").to("isPrimed").connect(this);
+            Ember.Binding.from("model." + field).to("fieldName").connect(this);
         }
 
         Ember.defineProperty(this, "visible", Ember.computed(computedKeys.join(","), function() {

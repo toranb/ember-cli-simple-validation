@@ -1,0 +1,21 @@
+<div class="radeo-parent-div">
+  <label>select an option</label>
+  <div class="the-radio-buttons">
+    <div class="radio-button-one">
+      {{radio-button groupValue=model.radeo id="radio01" value=1}}
+      <label for="radio01">one (will require tos)</label>
+    </div>
+    <div class="radio-button-two">
+      {{radio-button groupValue=model.radeo id="radio02" value=2}}
+      <label for="radio02">two (does not require tos)</label>
+    </div>
+  </div>
+  {{#validation-error-field submitted=submitted className="red" field="radeo" model=model validation=radeoValidation}}invalid radeo{{/validation-error-field}}
+</div>
+
+<div class="tos-parent-div">
+{{input checked=model.tos type="checkbox"}} agree to terms
+{{#validation-error-field submitted=submitted className="red" field="tos" model=model validation=tosValidation}}invalid tos{{/validation-error-field}}
+</div>
+
+<button class="save" {{action "save"}}>Save</button>

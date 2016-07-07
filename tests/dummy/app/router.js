@@ -17,6 +17,8 @@ Router.map(function() {
     this.route("hash", {path: "/hash"});
     this.route("edits", {path: "/edits"});
     this.route("dry", {path: "/dry"});
+    this.route("complex", {path: "/complex"});
+    this.route("manycomplex", {path: "/manycomplex"});
 });
 
 export default Router;
