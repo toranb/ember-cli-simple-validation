@@ -1,6 +1,13 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.3.0
+-----
+
+* [FEATURE]: implement complex validation for single object and array
+  ([#22](https://github.com/toranb/ember-cli-simple-validation/pull/22))
+
+
 1.2.0
 -----
 
