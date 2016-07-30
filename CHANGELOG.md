@@ -1,6 +1,13 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.4.0
+-----
+
+* [EMBER]: removed Ember.Binding as its now deprecated
+  ([#23](https://github.com/toranb/ember-cli-simple-validation/pull/23))
+
+
 1.3.0
 -----
 
