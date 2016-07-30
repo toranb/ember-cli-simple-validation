@@ -13,11 +13,17 @@ var ValidationErrorField = Ember.Component.extend({
             fields.forEach(function(f) {
                 computedKeys.push("array.@each." + f);
             });
-            Ember.Binding.from("model." + fields[0] + "IsPrimed").to("isPrimed").connect(this);
+            Ember.defineProperty(this, "isPrimed", Ember.computed("model." + fields[0] + "IsPrimed", function() {
+                return this.get("model." + fields[0] + "IsPrimed");
+            }));
         }else{
             computedKeys.push("fieldName");
-            Ember.Binding.from("model." + field + "IsPrimed").to("isPrimed").connect(this);
-            Ember.Binding.from("model." + field).to("fieldName").connect(this);
+            Ember.defineProperty(this, "isPrimed", Ember.computed("model." + field + "IsPrimed", function() {
+                return this.get("model." + field + "IsPrimed");
+            }));
+            Ember.defineProperty(this, "fieldName", Ember.computed("model." + field, function() {
+                return this.get("model." + field);
+            }));
         }
 
         Ember.defineProperty(this, "visible", Ember.computed(computedKeys.join(","), function() {
