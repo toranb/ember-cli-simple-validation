@@ -1,6 +1,13 @@
 ember-cli-simple-validation Changelog
 ==============================
 
+1.4.1
+-----
+
+* [EMBER]: support the now deprecated targetObject
+  ([#25](https://github.com/toranb/ember-cli-simple-validation/pull/25))
+
+
 1.4.0
 -----
 
