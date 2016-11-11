@@ -33,7 +33,8 @@ var ValidationErrorField = Ember.Component.extend({
             var submitted = this.get("submitted");
             var className = this.get("className");
             var validator = this.get("validation");
-            var fieldValidation = this.get("targetObject." + validator + index + "Validation");
+            var targetObject = this.get("targetObject") || this.get("_targetObject");
+            var fieldValidation = targetObject.get(validator + index + "Validation");
             var validation = index >= 0 ? fieldValidation : validator;
             var condition = delayed === true ? !validation && submitted : !validation && (isPrimed || submitted);
             if(condition) {
