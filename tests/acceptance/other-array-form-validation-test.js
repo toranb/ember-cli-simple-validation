@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
@@ -30,11 +30,11 @@ const FOURTH_DISPLAY_NAME_INPUT = '.display-name-parent-div:eq(3) input';
 const FOURTH_TOS_INPUT = '.tos-parent-div:eq(3) input';
 
 module('Acceptance: Other Array Form Validation', {
-  setup: function() {
+  beforeEach() {
     application = startApp();
   },
-  teardown: function() {
-    Ember.run(application, 'destroy');
+  afterEach() {
+    run(application, 'destroy');
   }
 });
 

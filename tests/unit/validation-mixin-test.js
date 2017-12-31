@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Controller from '@ember/controller';
 import { test, module } from "qunit";
 import { attr, Model } from "ember-cli-simple-store/model";
 import { ValidationMixin, validate } from "ember-cli-simple-validation/mixins/validate";
@@ -10,17 +10,17 @@ var Person = Model.extend({
 
 var controller, model = Person.create({name: 'x', email: 'hi@hi.com'});
 
-var FakeController = Ember.Controller.extend(ValidationMixin, {
+var FakeController = Controller.extend(ValidationMixin, {
     nameValidation: validate("model.name"),
     emailValidation: validate("model.email", /\S+@\S+\.\S+/),
     model: model
 });
 
 module('Unit: Validation Mixin', {
-  setup: function() {
+  beforeEach() {
     controller = new FakeController();
   },
-  teardown: function() {
+  afterEach() {
     controller = null;
   }
 });

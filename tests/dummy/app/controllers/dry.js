@@ -1,8 +1,8 @@
-import Ember from "ember";
+import Controller from '@ember/controller';
 import MinMaxMixin from "dummy/mixins/min-max";
 import { ValidationMixin } from "ember-cli-simple-validation/mixins/validate";
 
-export default Ember.Controller.extend(ValidationMixin, MinMaxMixin, {
+export default Controller.extend(ValidationMixin, MinMaxMixin, {
     actions: {
         save: function() {
             this.set("submitted", true);
