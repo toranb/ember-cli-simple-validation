@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
@@ -15,12 +15,12 @@ const THIRD_NAME_INPUT_ERROR = '.name-parent-div:eq(2) span.name-input-error';
 const THIRD_NAME_INPUT = '.name-parent-div:eq(2) input';
 
 module('Acceptance: Multiple People Unique Name', {
-    setup: function () {
-        application = startApp();
-    },
-    teardown: function () {
-        Ember.run(application, 'destroy');
-    }
+  beforeEach() {
+    application = startApp();
+  },
+  afterEach() {
+    run(application, 'destroy');
+  }
 });
 
 test('all people must have a unique name', function (assert) {

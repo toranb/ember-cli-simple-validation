@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
@@ -17,11 +17,11 @@ const SECOND_BASIC_ERROR_FIELD = '.name-parent-div:eq(1) span.basic';
 const SECOND_NAME_INPUT = '.name-parent-div:eq(1) input';
 
 module('Acceptance: Many Array Single Prop Validation', {
-  setup: function() {
+  beforeEach() {
     application = startApp();
   },
-  teardown: function() {
-    Ember.run(application, 'destroy');
+  afterEach() {
+    run(application, 'destroy');
   }
 });
 

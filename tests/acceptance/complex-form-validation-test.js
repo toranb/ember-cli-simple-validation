@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
@@ -12,12 +12,12 @@ const TOS_ERROR_FIELD = '.tos-parent-div span';
 const SAVE_BUTTON = 'button.save';
 
 module('Acceptance: Complex Form Test', {
-    setup: function() {
-        application = startApp();
-    },
-    teardown: function() {
-        Ember.run(application, 'destroy');
-    }
+  beforeEach() {
+    application = startApp();
+  },
+  afterEach() {
+    run(application, 'destroy');
+  }
 });
 
 test('form is valid when checkbox two is selected and tos not checked', function(assert) {

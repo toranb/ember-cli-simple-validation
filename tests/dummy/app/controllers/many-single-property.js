@@ -1,7 +1,7 @@
-import Ember from "ember";
+import Controller from '@ember/controller';
 import {ValidationMixin, validateEach} from "ember-cli-simple-validation/mixins/validate";
 
-var ManySinglePropertyController = Ember.Controller.extend(ValidationMixin, {
+var ManySinglePropertyController = Controller.extend(ValidationMixin, {
     uniqueName: validateEach("name", function (name) {
         var filtered = this.get("model").filter(function (person) {
             return person.get("name") === name;
