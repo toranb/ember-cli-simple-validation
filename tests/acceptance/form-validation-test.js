@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
@@ -29,12 +29,12 @@ const VALID_RANDO = '1';
 const VALID_THING = 1;
 
 module('Acceptance: Form Validation', {
-    setup: function() {
-        application = startApp();
-    },
-    teardown: function() {
-        Ember.run(application, 'destroy');
-    }
+  beforeEach() {
+    application = startApp();
+  },
+  afterEach() {
+    run(application, 'destroy');
+  }
 });
 
 test('clicking save will transition to success when each field is valid', function(assert) {

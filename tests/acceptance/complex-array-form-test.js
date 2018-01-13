@@ -1,6 +1,6 @@
-import Ember from 'ember';
-import startApp from '../helpers/start-app';
+import { run } from '@ember/runloop';
 import { test, module } from 'qunit';
+import startApp from '../helpers/start-app';
 
 var application;
 
@@ -21,11 +21,11 @@ const TOS_ERROR_FIELD_MODEL_TWO = '.tos-parent-div span:eq(1)';
 const SAVE_BUTTON = 'button.save';
 
 module('Acceptance: Complex Array Form Test', {
-    setup: function() {
+    beforeEach() {
         application = startApp();
     },
-    teardown: function() {
-        Ember.run(application, 'destroy');
+    afterEach() {
+        run(application, 'destroy');
     }
 });
 

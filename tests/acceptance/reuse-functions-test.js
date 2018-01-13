@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
@@ -11,12 +11,12 @@ const NAME_INPUT = '.name-div input';
 const SAVE_BUTTON = 'button.save';
 
 module('Acceptance: Reuse Functions Test', {
-    setup: function() {
-        application = startApp();
-    },
-    teardown: function() {
-        Ember.run(application, 'destroy');
-    }
+  beforeEach() {
+    application = startApp();
+  },
+  afterEach() {
+    run(application, 'destroy');
+  }
 });
 
 test('name must validate min, max and other before the form is legit', function(assert) {

@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Controller from '@ember/controller';
 import {ValidationMixin, validate} from "ember-cli-simple-validation/mixins/validate";
 
 var customFunc = function() {
@@ -15,7 +15,7 @@ var customFunc = function() {
     return radeo === 2;
 };
 
-export default Ember.Controller.extend(ValidationMixin, {
+export default Controller.extend(ValidationMixin, {
     radeoValidation: validate("model.radeo", "model.tos", customFunc),
     tosValidation: validate("model.radeo", "model.tos", customFunc),
     actions: {

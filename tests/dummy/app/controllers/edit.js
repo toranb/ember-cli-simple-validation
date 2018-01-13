@@ -1,7 +1,7 @@
-import Ember from "ember";
+import Controller from '@ember/controller';
 import {ValidationMixin, validate} from "ember-cli-simple-validation/mixins/validate";
 
-export default Ember.Controller.extend(ValidationMixin, {
+export default Controller.extend(ValidationMixin, {
     nameValidation: validate("model.name"),
     zipcodeValidation: validate("model.zipcode", /\d{5}/),
     emailValidation: validate("model.email", /\S+@\S+\.\S+/),

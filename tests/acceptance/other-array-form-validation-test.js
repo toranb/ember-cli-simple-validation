@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import startApp from '../helpers/start-app';
 import { test, module } from 'qunit';
 
 var application;
 
 const SAVE_BUTTON = 'button.save';
-const ADD_BUTTON = 'button.add';
 const VALID_DISPLAY_NAME = 'x';
 const INVALID_DISPLAY_NAME = '';
 
@@ -26,15 +25,13 @@ const THIRD_TOS_INPUT = '.tos-parent-div:eq(2) input';
 
 const FOURTH_DISPLAY_NAME_ERROR_FIELD = '.display-name-parent-div:eq(3) span';
 const FOURTH_TOS_ERROR_FIELD = '.tos-parent-div:eq(3) span';
-const FOURTH_DISPLAY_NAME_INPUT = '.display-name-parent-div:eq(3) input';
-const FOURTH_TOS_INPUT = '.tos-parent-div:eq(3) input';
 
 module('Acceptance: Other Array Form Validation', {
-  setup: function() {
+  beforeEach() {
     application = startApp();
   },
-  teardown: function() {
-    Ember.run(application, 'destroy');
+  afterEach() {
+    run(application, 'destroy');
   }
 });
 
