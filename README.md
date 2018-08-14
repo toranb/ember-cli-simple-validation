@@ -2,6 +2,8 @@
 
 [![Build Status][]](https://travis-ci.org/toranb/ember-cli-simple-validation)
 
+This project is no longer actively maintained because other great addons like [ember-changeset-validations][] do a much better job :)
+
 ## Description
 
 [ember-cli][] addon that provides simple validation for [ember.js][] web applications
@@ -274,7 +276,7 @@ In addition you need to push in both fields comma delimited using the `fields` a
     </div>
     {{#validation-error-field array=model index=index submitted=submitted className="red" field="radeo,tos" model=person validation="one"}}invalid radeo{{/validation-error-field}}
   </div>
-  
+
   <div class="tos-parent-div">
   {{input checked=person.tos type="checkbox"}} agree to terms
   {{#validation-error-field array=model index=index submitted=submitted className="red" field="tos,radeo" model=person validation="two"}}invalid tos{{/validation-error-field}}
@@ -313,3 +315,4 @@ Licensed under the MIT License
 [Build Status]: https://travis-ci.org/toranb/ember-cli-simple-validation.svg?branch=master
 [ember-cli]: http://www.ember-cli.com/
 [ember.js]: http://emberjs.com/
+[ember-changeset-validations]: https://github.com/poteto/ember-changeset-validations
